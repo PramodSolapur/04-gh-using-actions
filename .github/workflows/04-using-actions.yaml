@@ -16,7 +16,7 @@ jobs:
                 node-version: 20
             - name: Install Dependencies    # To install deps need package-lock.json file
               working-directory: ./react-app    # change the workdir relative to .github folder
-              run: npm ci                       # npm ci or npm install both are same
+              run: npm install                       # npm ci or npm install both are same
             - name: Run Unit Tests
               working-directory: ./react-app
               run: npm run test
