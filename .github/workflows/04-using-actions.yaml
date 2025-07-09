@@ -9,12 +9,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout Code
-              uses: actions/checkout@v3
+              uses: actions/checkout@v3     # Get the code from the repo to VM
             - name: Setup Node
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v3   # Install node v20
               with:
                 node-version: 20
-            - name: Install Dependencies
+            - name: Install Dependencies    # To install deps need package-lock.json file
+              working-directory: ./react-app    # change the workdir relative to .github folder
+              run: npm ci                       # npm ci or npm install both are same
+            - name: Run Unit Tests
               working-directory: ./react-app
-              run: npm ci
-            
+              run: npm run test
